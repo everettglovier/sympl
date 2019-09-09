@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "sympl-chat": [
+        "dist/sympl-chat"
+      ],
+      "sympl-chat/*": [
+        "dist/sympl-chat/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

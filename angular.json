@@ -124,6 +124,41 @@
           }
         }
       }
+    },
+    "SymplChat": {
+      "projectType": "library",
+      "root": "projects/sympl-chat",
+      "sourceRoot": "projects/sympl-chat/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/sympl-chat/tsconfig.lib.json",
+            "project": "projects/sympl-chat/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sympl-chat/src/test.ts",
+            "tsConfig": "projects/sympl-chat/tsconfig.spec.json",
+            "karmaConfig": "projects/sympl-chat/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sympl-chat/tsconfig.lib.json",
+              "projects/sympl-chat/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "sympl"
 }
