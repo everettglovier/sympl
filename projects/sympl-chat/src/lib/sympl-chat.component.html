@@ -1,0 +1,13 @@
+<div
+  #editor
+  class="editor" contenteditable="true"
+  (input)="input( $event )"
+  (change)="change( $event )"
+  (keydown)="keydown( $event )"
+  (keyup)="keyup( $event )">
+  <span>Name</span> asdf asdf as <span>Name</span>
+</div>
+
+<div class="editor" contenteditable="true">
+  <span>Name</span> asdf asdf as <span><span contenteditable="false">Name</span></span> sdfs dfs
+</div>

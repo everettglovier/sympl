@@ -24,6 +24,12 @@
       ],
       "sympl-chat/*": [
         "dist/sympl-chat/*"
+      ],
+      "sympl-context": [
+        "dist/sympl-context"
+      ],
+      "sympl-context/*": [
+        "dist/sympl-context/*"
       ]
     }
   },

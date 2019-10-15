@@ -1,0 +1,8 @@
+<div *ngFor="let item of items; let x = index" class="item-container">
+  <div [class]="item.type" *ngIf="item.type === 'header'">{{ item.label}}</div>
+  <div [class]="item.type" *ngIf="item.type === 'item' || item.type == 'divider'" (click)="itemHandler( $event, item )" (mouseup)="preventBubble( $event )" (mousedown)="preventBubble( $event )">
+    <div class="icon" *ngIf="item.icon" [ngClass]="item.icon"></div>
+    <div class="image" *ngIf="item.image" [ngStyle]="{ 'background-image': 'url(' + item.image + ')' }"></div>
+    {{ item.type == 'divider' ? '' : item.label}}
+  </div>
+</div>

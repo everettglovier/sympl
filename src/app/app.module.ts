@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {SymplChatModule} from "../../projects/sympl-chat/src/lib/sympl-chat.module";
+import {SymplContextModule} from "../../projects/sympl-context/src/lib/sympl-context.module";
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import {SymplChatModule} from "../../projects/sympl-chat/src/lib/sympl-chat.modu
   ],
   imports: [
     BrowserModule,
-    SymplChatModule
+    SymplChatModule,
+    SymplContextModule
   ],
   providers: [],
   bootstrap: [AppComponent]
