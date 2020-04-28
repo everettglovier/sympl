@@ -30,6 +30,30 @@
       ],
       "sympl-context/*": [
         "dist/sympl-context/*"
+      ],
+      "sympl-modal": [
+        "dist/sympl-modal"
+      ],
+      "sympl-modal/*": [
+        "dist/sympl-modal/*"
+      ],
+      "sympl-form": [
+        "dist/sympl-form"
+      ],
+      "sympl-form/*": [
+        "dist/sympl-form/*"
+      ],
+      "sympl-spinner": [
+        "dist/sympl-spinner"
+      ],
+      "sympl-spinner/*": [
+        "dist/sympl-spinner/*"
+      ],
+      "sympl-toggle": [
+        "dist/sympl-toggle"
+      ],
+      "sympl-toggle/*": [
+        "dist/sympl-toggle/*"
       ]
     }
   },

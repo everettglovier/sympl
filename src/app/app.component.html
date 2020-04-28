@@ -1,9 +1,17 @@
-<sympl-chat></sympl-chat>
-<h1>f</h1>
-<h1>f</h1>
-<h1>f</h1>
-<h1>f</h1>
-<h1>f</h1>
-<h1>f</h1>
-<h1>f</h1>
-<button (click)="click( $event )">Click</button>
+<sympl-form [controls]="controls" [object]="object" (submitted)="submit($event)"></sympl-form>
+<span [tooltip]="'I <3 Nicki'" (click)="list($event)">hover me</span>
+<span [tooltip]="'fsdftooltip'" (click)="list($event)">hover me</span>
+<span [tooltip]="'fsdftooltip'" (click)="list($event)">hover me</span>
+<span [tooltip]="'fsdftooltip'" (click)="list($event)">hover me</span>
+<span [tooltip]="'fsdsdfsdf asf sfas fasffafd af af af asdf sd f sdf sdaf ftooltip'" (click)="list($event)">hover me</span>
+<span [tooltip]="'fsdftooltip'" (click)="list($event)">hover me</span>
+<span [tooltip]="'fsdftooltip'" (click)="list($event)">hover me</span>
+
+{{ variable }}
+<button (click)="createModal()">Modal</button>
+<button (click)="createContext( $event )">Context</button>
+
+<ng-template #template>
+  <img src="https://via.placeholder.com/1000x800" style="display: block; box-shadow: 4px 4px 30px rgba(0,0,0,.3)">
+  <h3>This is an image</h3>
+</ng-template>

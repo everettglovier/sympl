@@ -1,0 +1,40 @@
+{
+  "name": "sympl-form",
+  "version": "1.1.6",
+
+  "description": "Angular 4+ Form Generator",
+  "main": "src/public-api.ts",
+  "directories": {
+    "lib": "src/lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/everettglovier/sympl.git"
+  },
+  "keywords": [
+    "context",
+    "menu",
+    "angular",
+    "form"
+  ],
+  "author": "Everett Glovier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/everettglovier/sympl/issues"
+  },
+  "homepage": "https://github.com/everettglovier/sympl#readme",
+  "peerDependencies": {
+    "@mobiscroll/angular": "^4.9.1",
+    "@angular/common": "^8.2.0",
+    "@angular/core": "^8.2.0",
+    "googlemaps": "^1.12.0",
+    "ngx-quill": "^7.3.11",
+    "quill": "^1.3.7"
+  },
+  "dependencies": {
+
+  }
+}

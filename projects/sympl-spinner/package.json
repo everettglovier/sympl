@@ -1,0 +1,31 @@
+{
+  "name": "sympl-spinner",
+  "version": "1.2.0",
+  "description": "Angular 4+ Spinner",
+  "main": "src/public-api.ts",
+  "directories": {
+    "lib": "src/lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/everettglovier/sympl.git"
+  },
+  "keywords": [
+    "context",
+    "menu",
+    "angular",
+    "form"
+  ],
+  "author": "Everett Glovier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/everettglovier/sympl/issues"
+  },
+  "homepage": "https://github.com/everettglovier/sympl#readme",
+  "dependencies": {
+
+  }
+}

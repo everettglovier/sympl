@@ -1,3 +1,10 @@
+.tooltip {
+  padding: 10px;
+  font-family: sans-serif;
+  font-size: 14px;
+  max-width: 200px;
+  text-align: center;
+}
 .item-container{
   font-family: sans-serif;
   font-size: 16px;
@@ -20,16 +27,20 @@
     text-align: left;
     .icon{
       color: var( --symp-context-icon-color, #444 );
-      width: 20px;
+      width: var( --symp-context-icon-width, 20px);
+      margin-right: var( --symp-context-icon-margin, 5px);
       text-align: center;
     }
     &.active {
-      background: var(  --sympl-context-primary, #444 );
-      color: white;
+      background: var(  --sympl-context-active-background, #444 );
+      color: var(  --sympl-context-active-color, #fff );
     }
-    &:hover {
-      background: var(  --sympl-context-primary, #444 );
-      color: var(  --sympl-context-hover-color, white );;
+    &:hover, &.focused {
+      .icon {
+        color: var(--symp-context-icon-hover-color, #fff);
+      }
+      background: var(  --sympl-context-hover-background, #444 );
+      color: var(  --sympl-context-hover-color, #fff );
       cursor: pointer;
     }
   }
@@ -38,7 +49,7 @@
   }
   .divider{
     height: 1px;
-    border-top: 1px solid var(  --sympl-context-dark, #999 );
+    border-top: var( --sympl-context-divider );
   }
   .header {
     padding: 15px 20px;
@@ -46,11 +57,9 @@
     font-weight: 500;
     text-align: left;
     margin: 0;
-
     &:not(:first-child) {
-      border-top: 1px solid var( --sympl-context-dark, #999 );
+      border-top: 1px solid var( --sympl-context-divider );
     }
-
-    border-bottom: 1px solid var( --sympl-context-dark, #999 );
+    border-bottom: 1px solid var( --sympl-context-divider );
   }
 }

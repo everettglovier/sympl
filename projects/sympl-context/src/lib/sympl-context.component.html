@@ -1,5 +1,5 @@
-<div class="overlay" *ngIf="overlay" (click)="close()"></div>
-<div #dropdown class="super-dropdown" [ngStyle]="style" [ngClass]="classes" @fadePopInAnimation>
+<div class="overlay" *ngIf="overlay" (click)="animate = false"></div>
+<div #dropdown class="super-dropdown" [ngStyle]="style" [ngClass]="classes" [@fadePopInAnimation]="animate" (@fadePopInAnimation.done)="animationDone( $event )">
   <div class="sympl-caret" *ngIf="caret" [ngStyle]="caretStyle" [ngClass]="caretClass">
     <svg height="10" width="28">
       <path class="sympl-caret-point"

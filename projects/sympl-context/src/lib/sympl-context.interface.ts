@@ -1,7 +1,8 @@
 export interface SymplContextInterface {
-  origin: Array<number> | MouseEvent | Element;
+  origin?: Array<number> | MouseEvent | Element;
   items?: Array<SymplContextItemInterface>;
   width?: 'inherit' | number;
+  minWidth?: 'auto' | string;
   maxHeight?: number;
   options?: Array<SymplContextItemInterface>;
   component?: any;
@@ -13,7 +14,7 @@ export interface SymplContextInterface {
   onSelection?: any;
   colorPicker?: any;
   align?: string;
-  classes?: string;
+  classes?: string | string[];
   handler?( data? ): any;
   onClose?(): any;
 }

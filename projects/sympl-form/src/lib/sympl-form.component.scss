@@ -1,0 +1,34 @@
+@import "~@mobiscroll/angular/dist/css/mobiscroll.scss";
+.image-preview {
+  width: 150px;
+  height: 150px;
+  display: block;
+  border-radius: 3px;
+  object-fit: cover;
+}
+sympl-form {
+  --form-danger: red;
+  .required {
+    color: var(--form-danger);
+  }
+
+  .input-group .form-control {
+    z-index: inherit !important;
+  }
+
+  .form-control:focus {
+    color: black;
+  }
+
+  .address {
+    display: flex;
+
+    .address {
+      flex: 1 1 50%;
+    }
+
+    .lat, .lng {
+      flex: 1 1 25%;
+    }
+  }
+}

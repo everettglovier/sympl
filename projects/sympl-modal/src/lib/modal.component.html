@@ -1,0 +1,12 @@
+<div class="modal-container" [ngStyle]="styles" [ngClass]="classes">
+  <div class="modal-header" *ngIf="header || closeButton">
+    <span *ngIf="header" [innerHTML]="header"></span>
+    <span *ngIf="!header"></span>
+    <div *ngIf="closeButton" class="close" (click)="close()" [ngStyle]="closeButtonStyles"><i class="fas fa-times"></i></div>
+  </div>
+  <div class="modal-body" *ngIf="body" [innerHTML]="body"></div>
+  <ng-container *ngIf="template">
+    <ng-container *ngTemplateOutlet="template"></ng-container>
+  </ng-container>
+  <div #modal class="modal-injector" [ngStyle]="{padding: padding }"></div>
+</div>

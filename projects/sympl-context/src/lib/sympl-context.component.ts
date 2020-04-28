@@ -1,5 +1,14 @@
 import {
-  Component, ComponentFactoryResolver, ElementRef, EmbeddedViewRef, EventEmitter, HostListener, Input, OnInit, Output,
+  Component,
+  ComponentFactoryResolver,
+  ElementRef,
+  EmbeddedViewRef,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -17,6 +26,7 @@ export class SymplContextComponent implements OnInit {
   caretClass = 'top';
   componentRef;
   componentElement;
+  animate = true;
   srcElement;
   // The dropdown
   @ViewChild('dropdown', {static: false}) dropdown;
@@ -39,7 +49,10 @@ export class SymplContextComponent implements OnInit {
   // Align Dropdown to origin
   @Input() align = 'center';
   // Dropdown width
-  @Input() width;
+  @Input() width = 'auto';
+  // Min width of the dropdown
+  @Input() minWidth = '200px';
+  @Input() maxWidth = '90vw';
   // Padding from window edge
   @Input() padding = 10;
   // Margin from origin
@@ -50,10 +63,10 @@ export class SymplContextComponent implements OnInit {
   @Input() overlay = true;
   // Close callback
   @Input() onClose() {}
+
   // Close the dropdown
   @Input() close() {
     if ( this.onClose ) {
-      console.log('CLosing');
       this.onClose();
     }
     this.destroy.emit( true );
@@ -65,6 +78,10 @@ export class SymplContextComponent implements OnInit {
   }
   constructor( public componentFactoryResolver: ComponentFactoryResolver ) {}
   async ngOnInit() {
+    document.documentElement.style.setProperty('--sympl-context-min-width', this.minWidth );
+    document.documentElement.style.setProperty('--sympl-context-width', this.width );
+    document.documentElement.style.setProperty('--sympl-context-max-width', this.maxWidth );
+
     /* Generate a component */
     if ( this.component ) {
       const component = this.componentFactoryResolver.resolveComponentFactory(this.component);
@@ -92,7 +109,6 @@ export class SymplContextComponent implements OnInit {
       throw new Error('Could not determine a location for the dropdown. Please specify an origin.');
     }
     if ( this.origin instanceof MouseEvent ) {
-      console.log('Mouse event detected');
       this.origin = this.origin.target;
      /* dims = this.origin.srcElement.getBoundingClientRect();
       this.srcElement = this.origin.srcElement;*/
@@ -145,8 +161,6 @@ export class SymplContextComponent implements OnInit {
       this.classes += ' top';
     }
 
-    console.log( dims );
-
     /** If the source element is offscreen vertically **/
     let left;
 
@@ -187,8 +201,6 @@ export class SymplContextComponent implements OnInit {
 
     this.containerStyle['max-height'] = style['max-height'] + 'px';
 
-    console.log( style );
-
     /** Add px to values for css **/
     const pixels = [ 'top', 'bottom', 'left', 'right', 'width', 'height', 'max-height' ];
     for ( const pixel of pixels ) {
@@ -201,7 +213,6 @@ export class SymplContextComponent implements OnInit {
         this.caretStyle[ pixel ] = this.caretStyle[ pixel ] + 'px';
       }
     }
-    console.log( style );
     return style;
   }
 
@@ -209,6 +220,11 @@ export class SymplContextComponent implements OnInit {
   documentClick( event ) {
     if ( this.srcElement === event.target ) {
     } else {
+      //this.close();
+    }
+  }
+  animationDone( $event ) {
+    if ( $event.toState === false ) {
       this.close();
     }
   }

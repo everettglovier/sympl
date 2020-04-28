@@ -1,0 +1,7 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/sympl-toggle",
+  "lib": {
+    "entryFile": "src/projects/sympl-context.ts"
+  }
+}

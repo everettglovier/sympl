@@ -1,0 +1,96 @@
+<form class="sympl-form" #form="ngForm" (ngSubmit)="onSubmit()" autocomplete="off">
+  <ng-container *ngFor="let control of controls">
+    <ng-container *ngIf="evaluateCondition( control )">
+      <h3 *ngIf="control.type === 'divider'">{{ control.label || '' }}</h3>
+      <p  *ngIf="control.type === 'divider' && control.text" [innerHTML]="control.text"></p>
+      <div class="form-list" *ngIf="control.type === 'form'">
+        <label *ngIf="control.label" [for]="control.name">{{ control.label }}  <span class="required" *ngIf="control.required">*</span> <a href="#" (click)="$event.preventDefault(); newItem( control )">New</a></label>
+        <div class="form-list-items" *ngIf="object[control.name]">
+          <div class="form-list-item" *ngFor="let o of object[control.name]; let i = index">
+            <sympl-form  [submitButton]="false" [object]="o" [controls]="control.controls || []"></sympl-form>
+            <div class="form-list-controls">
+              <div class="form-list-delete" (click)="deleteItem( control, i )" [ngClass]="control.deleteClasses">{{ control.deleteText || 'Delete' }}</div>
+              <div class="form-list-options" *ngIf="control.button"  (click)="control.button( $event, control, i, o, object )" [ngClass]="control.buttonClasses">{{ control.buttonText || 'Delete' }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="control.type === 'address'">
+        <label *ngIf="control.label" [for]="control.name">{{ control.label }}  <span class="required" *ngIf="control.required">*</span></label>
+        <div class="form-group">
+          <div class="address" *ngIf="control.type === 'address'">
+            <input #location autocomplete="off" [(ngModel)]="object[control.name]" [id]="control.name" [name]="control.name" type="text" class="form-control address" [placeholder]="control.placeholder || ''" [required]="control.required || false">
+          </div>
+        </div>
+        <div  [ngStyle]="control.hideFields ? {display: 'none'} : ''">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <label>Lat</label>
+                <input #lat [id]="control.name + '_lat'" [name]="control.latName || 'lat'" [(ngModel)]="object[control.latName]" type="text" class="form-control lat" [placeholder]="control.latPlaceholder || 'Lat'" [required]="false">
+              </div>
+              <div class="col-sm-6">
+                <label>Long</label>
+                <input #lng [id]="control.name + '_lng'" [name]="control.lngName || 'lng'" [(ngModel)]="object[control.lngName]" type="text" class="form-control lng" [placeholder]="control.lngPlaceholder || 'Long'" [required]="false">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-4">
+              <label>City  <span class="required" *ngIf="control.required">*</span></label>
+              <input #city [id]="control.name + '_city'" [name]="control.cityName || 'city'" [(ngModel)]="object[control.cityName]" type="text" class="form-control lat" [placeholder]="control.cityPlaceholder || 'City'" [required]="control.required || false">
+            </div>
+            <div class="col-sm-4">
+              <label>State  <span class="required" *ngIf="control.required">*</span></label>
+              <input #state [id]="control.name + '_state'" [name]="control.stateName || 'state'" [(ngModel)]="object[control.stateName]" type="text" class="form-control lat" [placeholder]="control.statePlaceholder || 'State'" [required]="control.required || false">
+            </div>
+            <div class="col-sm-4">
+              <label>Zip  <span class="required" *ngIf="control.required">*</span></label>
+              <input #zip [id]="control.name + '_zip'" [name]="control.zipName || 'zip'" [(ngModel)]="object[control.zipName]" type="text" class="form-control lat" [placeholder]="control.zipPlaceholder || 'Zip'" [required]="control.required || false">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group" *ngIf="formGroups.indexOf( control.type ) > -1" [ngClass]="attemptSubmit ? 'attempted' : ''">
+        <label *ngIf="control.label" [for]="control.name">{{ control.label }} <a href="#" *ngIf="control.edit && object[control.name]" (click)="$event.preventDefault(); control.edit.handler( object, control )">({{ control.edit.label || 'Edit' }})</a> <span class="required" *ngIf="control.required">*</span></label>
+        <div [ngClass]="control.buttons ? 'input-group' : ''">
+          <input *ngIf="inputGroups.indexOf( control.type ) > -1" [id]="control.name" step="1" [name]="control.name" [(ngModel)]="object[control.name]" [type]="control.type" [attr.autocomplete]="control.autocomplete || 'something-new'"  class="form-control" [placeholder]="control.placeholder || ''" [required]="control.required || false" [attr.maxlength]="control.maxlength ? control.maxlength : null" [attr.pattern]="control.pattern || null" [attr.title]="control.title || null">
+          <input *ngIf="control.type === 'datepicker'" [name]="control.name" [mbsc-options]="dateSetting" [(ngModel)]="object[control.name]" mbsc-calendar class="form-control" [placeholder]="control.placeholder || ''" [required]="control.required || false" />
+          <input *ngIf="control.type === 'timepicker'" [name]="control.name" [(ngModel)]="object[control.name]" mbsc-time class="form-control" [placeholder]="control.placeholder || ''" [required]="control.required || false" />
+          <input *ngIf="control.type === 'datetimepicker'" [name]="control.name" [(ngModel)]="object[control.name]" mbsc-datetime class="form-control" [placeholder]="control.placeholder || ''" [required]="control.required || false" />
+          <input mbsc-select *ngIf="control.type === 'picker'" [name]="control.name" [(ngModel)]="object[control.name]" [mbsc-data]="control.data" [mbsc-options]="control.options || { display: 'bubble' }" class="form-control" [placeholder]="control.placeholder || ''" [required]="control.required || false" />
+          <mbsc-switch *ngIf="control.type === 'switch'" [name]="control.name"  [(ngModel)]="object[control.name]"></mbsc-switch>
+          <ng-container *ngIf="control.type === 'file'">
+            <img *ngIf="control.thumb" [src]="control.thumb" class="image-preview">
+            <div (click)="openFileDialog(control)" class="form-control">{{ control.placeholder || '' }}</div>
+            <input [name]="control.name" style="display: none;" [id]="control.name" type="file" (change)="fileChange($event, control)"  class="form-control" [placeholder]="control.placeholder || ''" [required]="control.required || false" />
+          </ng-container>
+          <input *ngIf="control.type === 'color'" [name]="control.name" [mbsc-options]="colorSetting" [(ngModel)]="object[control.name]" [(ngModel)]="object[control.name]" mbsc-color class="form-control" [placeholder]="control.placeholder || ''" [required]="control.required || false" />
+          <input *ngIf="control.type === 'daterange'" [name]="control.name" [mbsc-options]="dateSetting" [(ngModel)]="object[control.name]" [(ngModel)]="object[control.name]" mbsc-range [mbsc-options]="nonFormSettings" class="form-control" [placeholder]="control.placeholder || ''" [required]="control.required || false" />
+          <select *ngIf="control.type === 'select'" [name]="control.name" [(ngModel)]="object[control.name]" class="form-control" [required]="control.required || false">
+            <option *ngFor="let option of control.options" [value]="option.value">{{ option.label }}</option>
+          </select>
+          <p *ngIf="control.type === 'paragraph'" [innerHTML]="control.object[ object[ control.key ] ]?.data[ control.objectKey ] || 'Not found...'"></p>
+          <textarea *ngIf="control.type === 'textarea'" [name]="control.name" [(ngModel)]="object[control.name]" class="form-control" [placeholder]="control.placeholder || ''" [required]="control.required || false"></textarea>
+          <quill-editor [name]="control.name" [(ngModel)]="object[control.name]" *ngIf="control.type === 'quill'" [placeholder]="control.placeholder || ''" [modules]="quillConfig" [required]="control.required"></quill-editor>
+          <span class="input-group-btn" *ngIf="control.buttons">
+          <ng-container *ngFor="let button of control.buttons" >
+            <button *ngIf="( button.showIfSet && object[control.name] ) || !button.showIfSet" class="btn red" type="button" (click)="handle( control, button )"><i [ngClass]="button.icon || ''"></i>&nbsp;{{ button.label }}</button>
+          </ng-container>
+        </span>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngFor="let error of errors">
+    <div class="alert alert-danger" @fadeAnimation>
+      {{ error.message }}
+    </div>
+  </ng-container>
+  <div class="text-right">
+    <button *ngFor="let button of buttons" type="button" (click)="button.handler( $event )" class="btn" [ngClass]="button.classes || 'dark'">{{ button.text }}</button>
+    <button *ngIf="submitButton" [type]="form.form.valid ? 'submit' : 'button'" (click)="attemptSubmit = true" class="btn blue">{{ submitText }}</button>
+  </div>
+</form>

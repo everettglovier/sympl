@@ -194,6 +194,146 @@
           }
         }
       }
+    },
+    "sympl-modal": {
+      "projectType": "library",
+      "root": "projects/sympl-modal",
+      "sourceRoot": "projects/sympl-modal/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/sympl-modal/tsconfig.lib.json",
+            "project": "projects/sympl-modal/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sympl-modal/src/test.ts",
+            "tsConfig": "projects/sympl-modal/tsconfig.spec.json",
+            "karmaConfig": "projects/sympl-modal/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sympl-modal/tsconfig.lib.json",
+              "projects/sympl-modal/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "sympl-form": {
+      "projectType": "library",
+      "root": "projects/sympl-form",
+      "sourceRoot": "projects/sympl-form/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/sympl-form/tsconfig.lib.json",
+            "project": "projects/sympl-form/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sympl-form/src/test.ts",
+            "tsConfig": "projects/sympl-form/tsconfig.spec.json",
+            "karmaConfig": "projects/sympl-form/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sympl-form/tsconfig.lib.json",
+              "projects/sympl-form/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "SymplSpinner": {
+      "projectType": "library",
+      "root": "projects/sympl-spinner",
+      "sourceRoot": "projects/sympl-spinner/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/sympl-spinner/tsconfig.lib.json",
+            "project": "projects/sympl-spinner/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sympl-spinner/src/test.ts",
+            "tsConfig": "projects/sympl-spinner/tsconfig.spec.json",
+            "karmaConfig": "projects/sympl-spinner/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sympl-spinner/tsconfig.lib.json",
+              "projects/sympl-spinner/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "sympl-toggle": {
+      "projectType": "library",
+      "root": "projects/sympl-toggle",
+      "sourceRoot": "projects/sympl-toggle/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/sympl-toggle/tsconfig.lib.json",
+            "project": "projects/sympl-toggle/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sympl-toggle/src/test.ts",
+            "tsConfig": "projects/sympl-toggle/tsconfig.spec.json",
+            "karmaConfig": "projects/sympl-toggle/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sympl-toggle/tsconfig.lib.json",
+              "projects/sympl-toggle/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "sympl"
 }

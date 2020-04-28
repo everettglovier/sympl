@@ -1,0 +1,32 @@
+{
+  "name": "sympl-modal",
+  "version": "1.0.7",
+  "description": "Angular 4+ Modal",
+  "main": "src/public-api.ts",
+  "directories": {
+    "lib": "src/lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/everettglovier/sympl.git"
+  },
+  "keywords": [
+    "context",
+    "menu",
+    "angular",
+    "dropdown"
+  ],
+  "author": "Everett Glovier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/everettglovier/sympl/issues"
+  },
+  "homepage": "https://github.com/everettglovier/sympl#readme",
+  "peerDependencies": {
+    "@angular/common": "^8.2.0",
+    "@angular/core": "^8.2.0"
+  }
+}

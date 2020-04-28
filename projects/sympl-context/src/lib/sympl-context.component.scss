@@ -1,3 +1,6 @@
+:host {
+  display: block;
+}
 .overlay{
   position: fixed;
   top: 0;
@@ -26,20 +29,20 @@
     fill: white;
   }
   .sympl-caret {
-    font-size: 25px;
+    font-size: 0;
     line-height: 1;
     &.top{
       width: 28px;
       height: 10px;
       position: absolute;
-      top: -20px;
+      top: -10px;
     }
     &.bottom{
       transform: rotate(180deg);
       width: 28px;
       height: 10px;
       position: absolute;
-      bottom: -20px;
+      bottom: -10px;
     }
   }
   box-shadow: 0px 3px 6px rgba(0,0,0,.16);
@@ -47,15 +50,17 @@
   transform-origin: top center;
   position: fixed;
   z-index: 100;
-  max-width: 90vw;
-  min-width: 200px;
+  width: var(--sympl-context-width, auto );
+  max-width: var(--sympl-context-max-width, 90vw );
+  min-width: var(--sympl-context-min-width, 200px );
   background: #fff;
   border-radius: 5px;
-  color: var(--dark-6);
+  color: var(--sympl-context-color);
   &.dark{
-    background: var(--dark);
+    color: var(--sympl-context-dark-color, #fff);
+    background: var(--sympl-context-dark-background, rgba(0,0,0,.7));
     .sympl-caret-point{
-      fill: var(--dark);;
+      fill: var(--sympl-context-dark-background, rgba(0,0,0,.7));
     }
   }
 }
